@@ -41,6 +41,6 @@ app.use("/api/courses", courseRoutes);
 
 
 const PORT = process.env.PORT || 8000;
-//server.listen(PORT, () => console.log("🚀 Server running on port", PORT));
-export default app;
+server.listen(PORT, () => console.log("🚀 Server running on port", PORT));
+//export default app;
 
