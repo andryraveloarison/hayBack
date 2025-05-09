@@ -22,7 +22,6 @@ app.use(cors({
 
 
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: "*" } });
 
 connectToDatabase();
 
@@ -39,4 +38,6 @@ app.use("/api/courses", courseRoutes);
 
 
 const PORT = process.env.PORT || 8000;
-server.listen(PORT, () => console.log("🚀 Server running on port", PORT));
+//server.listen(PORT, () => console.log("🚀 Server running on port", PORT));
+export default app;
+
