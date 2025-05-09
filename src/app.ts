@@ -3,7 +3,6 @@ import http from "http";
 import { Server } from "socket.io";
 import dotenv from "dotenv";
 import { connectToDatabase } from "./config/database";
-import { initSocket } from "./infrastructure/socket/ChatGateway";
 import userRoutes from "./presentation/http/UserController";
 import levelRoutes from "./presentation/http/LevelController";
 import subjectRoutes from "./presentation/http/SubjectController"
@@ -26,7 +25,6 @@ const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 
 connectToDatabase();
-initSocket(io);
 
 app.use(express.json());
 app.use("/api/users", userRoutes);
@@ -34,6 +32,7 @@ app.use("/api/levels", levelRoutes);
 app.use("/api/subjects", subjectRoutes);
 app.use("/api/chapters", chapterRoutes);
 app.use("/api/courses", courseRoutes);
+
 
 
 
