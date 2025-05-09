@@ -1,6 +1,5 @@
 import express from "express";
 import http from "http";
-import { Server } from "socket.io";
 import dotenv from "dotenv";
 import { connectToDatabase } from "./config/database";
 import userRoutes from "./presentation/http/UserController";
@@ -24,6 +23,10 @@ app.use(cors({
 const server = http.createServer(app);
 
 connectToDatabase();
+
+app.get("/", (req, res) => {
+    res.send("ça marche");
+  });
 
 app.use(express.json());
 app.use("/api/users", userRoutes);
