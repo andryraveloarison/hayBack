@@ -8,6 +8,7 @@
     "start": "node dist/app.js"
   },
   "dependencies": {
+    "@vercel/node": "^5.1.15",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",
