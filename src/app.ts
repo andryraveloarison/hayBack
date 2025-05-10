@@ -28,6 +28,10 @@ app.get("/", (req, res) => {
     res.send("ça marche");
   });
 
+app.get("/users", (req, res) => {
+    res.send("users");
+  });
+
 app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/levels", levelRoutes);
