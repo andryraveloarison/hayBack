@@ -8,9 +8,15 @@ const repo = new LevelRepositoryImpl();
 const createUser = new CreateLevel(repo);
 const getAllLevels = new GetAllLevels(repo);
 
+router.get("/", async (req, res) => {
+  res.json("LEVEL");
+  
+});
+
 router.post("/create", async (req, res) => {
   const user = await createUser.execute(req.body);
   res.json(user);
+
 });
 
 router.get("/getAll", async (req, res) => {
