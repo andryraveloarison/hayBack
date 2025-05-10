@@ -1,11 +1,11 @@
 {
   "name": "chat-app",
   "version": "1.0.0",
-  "main": "dist/indexs.js",
+  "main": "dist/app.js",
   "scripts": {
     "dev": "ts-node-dev --respawn src/app.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/app.js"
     
   },
   "dependencies": {
