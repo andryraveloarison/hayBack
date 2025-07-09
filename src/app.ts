@@ -27,7 +27,7 @@ const server = http.createServer(app);
 
 connectToDatabase();
 
-app.get("/api/ia", (req, res) => {
+app.get("/test", (req, res) => {
     res.send("ça marche");
   });
 
@@ -37,6 +37,7 @@ app.get("/users", (req, res) => {
 
 
 app.use(express.json());
+app.use("/api/message", iaRoutes)
 app.use("/api/users", userRoutes);
 app.use("/api/levels", levelRoutes);
 app.use("/api/subjects", subjectRoutes);
