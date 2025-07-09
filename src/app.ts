@@ -27,7 +27,7 @@ const server = http.createServer(app);
 
 connectToDatabase();
 
-app.get("/", (req, res) => {
+app.get("/api/ia", (req, res) => {
     res.send("ça marche");
   });
 
