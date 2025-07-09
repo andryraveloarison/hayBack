@@ -5,7 +5,7 @@ dotenv.config();
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/message", async (req, res) => {
   try {
     const { messages } = req.body;
 
