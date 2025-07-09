@@ -42,7 +42,6 @@ app.use("/api/levels", levelRoutes);
 app.use("/api/subjects", subjectRoutes);
 app.use("/api/chapters", chapterRoutes);
 app.use("/api/courses", courseRoutes);
-app.use("/api/ia", iaRoutes);
 
 const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => console.log("🚀 Server running on port", PORT));
