@@ -22,6 +22,12 @@ export class SongRepositoryImpl implements ISongRepository {
   async update(id: string, userData: Partial<Song>): Promise<Song | null> {
     return await SongModel.findByIdAndUpdate(id, userData, { new: true }).lean();
   }
+
+  async delete(id: string): Promise<boolean> {
+    const result = await SongModel.findByIdAndDelete(id);
+    return !!result;
+  }
+  
   
 
 }

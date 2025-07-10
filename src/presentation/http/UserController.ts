@@ -20,15 +20,10 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    // Essayer d'exécuter la connexion de l'utilisateur
     const user = await loginUser.execute(req.body.email, req.body.password);
     
-    // Si l'utilisateur est trouvé et connecté, envoyer l'utilisateur (sans mot de passe et clé)
     res.json(user);
   } catch (error) {
-    // Gérer les erreurs et envoyer une réponse appropriée
-  
-      // Pour toute autre erreur, renvoyer une erreur générique
       console.error(error);
       return res.status(500).json({ message: "Une erreur interne est survenue" });
     

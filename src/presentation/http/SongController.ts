@@ -2,12 +2,15 @@ import express from "express";
 import { SongRepositoryImpl } from "../../infrastructure/persistence/repositoryImpl/SongRepositoryImpl";
 import { CreateSong } from "../../application/usecases/Song/CreateSong";
 import { GetAllSongs } from "../../application/usecases/Song/GetAllSongs";
-import songsData from "../../data/lyrics.json"; // adapte le chemin si nécessaire
+import { UpdateSong } from "../../application/usecases/Song/UpdateSong";
+import { DeleteSong } from "../../application/usecases/Song/DeleteSong";
 
 const router = express.Router();
 const repo = new SongRepositoryImpl();
 const createSong = new CreateSong(repo);
 const getAllSongs = new GetAllSongs(repo);
+const updateSong = new UpdateSong(repo);
+const deleteSong = new DeleteSong(repo);
 
 router.get("/", async (req, res) => {
   res.json("SONG");
@@ -23,6 +26,18 @@ router.post("/create", async (req, res) => {
 router.get("/getAll", async (req, res) => {
   const songs = await getAllSongs.execute();
   res.json(songs);
+});
+
+router.put("/update/:id", async (req, res) => {
+  const { id } = req.params;
+  const updateResult = await updateSong.execute(id, req.body);
+  res.json(updateResult);
+});
+
+router.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  const deleteResult = await deleteSong.execute(id);
+  res.json(deleteResult);
 });
 
 
