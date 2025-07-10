@@ -8,6 +8,7 @@ import subjectRoutes from "./presentation/http/SubjectController"
 import chapterRoutes from "./presentation/http/ChapterController"
 import courseRoutes from "./presentation/http/CourseController"
 import iaRoutes from "./presentation/http/IAController"
+import songRoutes from "./presentation/http/SongController"
 import morgan from "morgan";
 
 import cors from "cors";
@@ -43,6 +44,7 @@ app.use("/api/levels", levelRoutes);
 app.use("/api/subjects", subjectRoutes);
 app.use("/api/chapters", chapterRoutes);
 app.use("/api/courses", courseRoutes);
+app.use("/api/song", songRoutes);
 
 const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => console.log("🚀 Server running on port", PORT));
