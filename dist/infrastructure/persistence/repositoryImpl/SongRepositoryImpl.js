@@ -38,5 +38,11 @@ class SongRepositoryImpl {
             return yield SongSchema_1.default.findByIdAndUpdate(id, userData, { new: true }).lean();
         });
     }
+    delete(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = yield SongSchema_1.default.findByIdAndDelete(id);
+            return !!result;
+        });
+    }
 }
 exports.SongRepositoryImpl = SongRepositoryImpl;

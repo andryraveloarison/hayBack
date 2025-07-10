@@ -16,10 +16,14 @@ const express_1 = __importDefault(require("express"));
 const SongRepositoryImpl_1 = require("../../infrastructure/persistence/repositoryImpl/SongRepositoryImpl");
 const CreateSong_1 = require("../../application/usecases/Song/CreateSong");
 const GetAllSongs_1 = require("../../application/usecases/Song/GetAllSongs");
+const UpdateSong_1 = require("../../application/usecases/Song/UpdateSong");
+const DeleteSong_1 = require("../../application/usecases/Song/DeleteSong");
 const router = express_1.default.Router();
 const repo = new SongRepositoryImpl_1.SongRepositoryImpl();
 const createSong = new CreateSong_1.CreateSong(repo);
 const getAllSongs = new GetAllSongs_1.GetAllSongs(repo);
+const updateSong = new UpdateSong_1.UpdateSong(repo);
+const deleteSong = new DeleteSong_1.DeleteSong(repo);
 router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.json("SONG");
 }));
@@ -30,6 +34,16 @@ router.post("/create", (req, res) => __awaiter(void 0, void 0, void 0, function*
 router.get("/getAll", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const songs = yield getAllSongs.execute();
     res.json(songs);
+}));
+router.put("/update/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const updateResult = yield updateSong.execute(id, req.body);
+    res.json(updateResult);
+}));
+router.delete("/delete/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const deleteResult = yield deleteSong.execute(id);
+    res.json(deleteResult);
 }));
 // router.post("/bulkCreate", async (req, res) => {
 //   try {
